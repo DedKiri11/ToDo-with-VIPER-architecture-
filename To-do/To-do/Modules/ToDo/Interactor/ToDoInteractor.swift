@@ -7,13 +7,27 @@
 
 import UIKit
 
-class ToDoInteractor: ToDoInteractorProtocol {
+final class ToDoInteractor: ToDoInteractorProtocol {
     weak var presenter: ToDoPresenterProtocol?
-    let db = CoreDataService.shared
     var todos: [ToDoEntity] = []
     
+      private let coreDataService: CoreDataServiceProtocol
+      private let apiService: ToDoAPIServiceProtocol
+      
+      convenience init() {
+          self.init(
+              coreDataService: CoreDataService.shared,
+              apiService: ToDoAPIService.shared
+          )
+      }
+      
+      init(coreDataService: CoreDataServiceProtocol, apiService: ToDoAPIServiceProtocol) {
+          self.coreDataService = coreDataService
+          self.apiService = apiService
+      }
+      
     func loadTodos() {
-        db.fetchTodos(completion: { [weak self] todos in
+        coreDataService.fetchTodos(completion: { [weak self] todos in
             self?.todos = todos
             
             if !todos.isEmpty {
@@ -21,9 +35,9 @@ class ToDoInteractor: ToDoInteractorProtocol {
                 return
             }
             
-            ToDoAPIService.shared.getData { [weak self] array in
+            self?.apiService.getData { [weak self] array in
                 self?.todos = array
-                self?.db.downloadTodos(todos: self?.todos ?? [])
+                self?.coreDataService.downloadTodos(todos: self?.todos ?? [])
                 
                 self?.retriveTodos()
             }
@@ -31,8 +45,8 @@ class ToDoInteractor: ToDoInteractorProtocol {
     }
     
     func createToDo(todo: ToDoEntity) {
-        self.db.createToDo(todo: ToDoEntity(id: findNextId(), todo: todo.todo, completed: todo.completed)) { [weak self] in
-            self?.db.fetchTodos(completion: { [weak self] todos in
+        self.coreDataService.createToDo(todo: ToDoEntity(id: findNextId(), todo: todo.todo, description: todo.description, completed: todo.completed)) { [weak self] in
+            self?.coreDataService.fetchTodos(completion: { [weak self] todos in
                 self?.todos = todos
                 
                 self?.retriveTodos()
@@ -40,18 +54,24 @@ class ToDoInteractor: ToDoInteractorProtocol {
         }
     }
     
+    private func fetchTodos() {
+        self.coreDataService.fetchTodos(completion: { [weak self] todos in
+            self?.todos = todos
+            
+            self?.retriveTodos()
+        })
+    }
+    
     func updateToDo(todo: ToDoEntity) {
-        self.db.updateToDo(todo: todo) { [weak self] in
-            self?.db.fetchTodos(completion: { [weak self] todos in
-                self?.todos = todos
-                
-                self?.retriveTodos()
-            })
+        self.coreDataService.updateToDo(todo: todo) { [weak self] in
+            self?.fetchTodos()
         }
     }
     
     func deleteFromDb(todo: ToDoEntity) {
-        self.db.deleteToDo(todo: todo)
+        self.coreDataService.deleteToDo(todo: todo) {  [weak self] in
+            self?.fetchTodos()
+        }
     }
     
     func retriveTodos() {
