@@ -82,6 +82,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		51A2057F300512B70036224E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				51A2057B300505650036224E /* ToDoDetailViewController.swift */,
+				51A20579300505510036224E /* ToDoTableViewCell.swift */,
+				FDF857FD2C85C60D00A0748B /* RadioButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FD6A4B952C80D2F9002432F7 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,10 +179,8 @@
 		FD725DC62C8083D90013C0C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				51A2057B300505650036224E /* ToDoDetailViewController.swift */,
-				51A20579300505510036224E /* ToDoTableViewCell.swift */,
 				FD725DB72C7F4B1D0013C0C1 /* ToDoViewController.swift */,
-				FDF857FD2C85C60D00A0748B /* RadioButton.swift */,
+				51A2057F300512B70036224E /* Views */,
 			);
 			path = View;
 			sourceTree = "<group>";

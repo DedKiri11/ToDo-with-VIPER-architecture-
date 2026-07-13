@@ -44,14 +44,14 @@ final class RadioButton: UIButton {
     init() {
         super.init(frame: .zero)
         
-        setUpUI()
+        setUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpUI() {
+    private func setUI() {
         isUserInteractionEnabled = true
         body.addSubview(checkmarkView)
         addSubview(body)

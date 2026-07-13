@@ -14,7 +14,7 @@ protocol ToDoDetailViewControllerDelegate: AnyObject {
 final class ToDoDetailViewController: UIViewController {
     weak var delegate: ToDoDetailViewControllerDelegate?
     private var todo: ToDoEntity
-
+    
     // MARK: - UI
     private lazy var titleTextField: UITextField = {
         let textfield = UITextField()
@@ -26,15 +26,22 @@ final class ToDoDetailViewController: UIViewController {
         textfield.delegate = self
         return textfield
     }()
-
+    
     private lazy var descriptionTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = .systemFont(ofSize: 16)
+        textView.font = .systemFont(ofSize: Constants.fontSize16)
         textView.textColor = .label
         textView.backgroundColor = .systemBackground
         textView.text = todo.description
-        textView.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        
+        textView.textContainerInset = UIEdgeInsets(
+            top: Constants.todoTextViewLeadingPadding,
+            left: 0,
+            bottom: Constants.todoTextViewLeadingPadding,
+            right: 0
+        )
+        
         textView.isScrollEnabled = false
         return textView
     }()
@@ -44,15 +51,15 @@ final class ToDoDetailViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = todo.date.toString()
         label.textColor = .secondaryLabel
-        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.font = .systemFont(ofSize: Constants.fontSize14, weight: .medium)
         return label
     }()
-
+    
     private lazy var stack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [titleTextField, dateLabel, descriptionTextView])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.spacing = 12
+        stack.spacing = Constants.stackSpacingSmall
         return stack
     }()
     
@@ -63,26 +70,26 @@ final class ToDoDetailViewController: UIViewController {
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
-
+    
     // MARK: - Init
-
+    
     init(todo: ToDoEntity) {
         self.todo = todo
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setupKeyboardDismissGesture()
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -90,37 +97,37 @@ final class ToDoDetailViewController: UIViewController {
     }
     
     // MARK: - UI
-
+    
     private func setUI() {
         view.backgroundColor = .systemBackground
         
         view.addSubview(scrollView)
         scrollView.addSubview(stack)
-
+        
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
-            stack.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 16),
-            stack.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor, constant: 16),
-            stack.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor, constant: -16),
-            stack.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -16),
-
+            
+            stack.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: Constants.detailScrollViewPadding),
+            stack.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor, constant: Constants.detailScrollViewPadding),
+            stack.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor, constant: -Constants.detailScrollViewPadding),
+            stack.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor, constant: -Constants.detailScrollViewPadding),
+            
             scrollView.contentLayoutGuide.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
-
-            titleTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 36),
-            descriptionTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
+            
+            titleTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: Constants.detailTitleHeight),
+            descriptionTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: Constants.detailDescriptionHeight)
         ])
     }
-
+    
     private func setupKeyboardDismissGesture() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-
+    
     @objc private func endEditing() {
         view.endEditing(true)
     }
@@ -128,7 +135,7 @@ final class ToDoDetailViewController: UIViewController {
     private func updateToDo() {
         var newTitle = titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         var newDescription = descriptionTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
-    
+        
         if todo.todo == newTitle { newTitle = ""}
         
         if todo.description == newDescription { newDescription = ""}

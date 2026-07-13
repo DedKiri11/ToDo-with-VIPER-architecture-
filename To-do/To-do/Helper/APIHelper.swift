@@ -24,6 +24,7 @@ class APIHelper {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print(APIErrors.badRequest.rawValue)
+                print(error.localizedDescription)
                 return
             }
             

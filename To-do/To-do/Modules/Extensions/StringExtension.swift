@@ -22,6 +22,10 @@ extension String {
         return NSLocalizedString("delete", comment: "")
     }
     
+    static var search: String {
+        return NSLocalizedString("search", comment: "")
+    }
+    
     static var update: String {
         return NSLocalizedString("update", comment: "")
     }

@@ -23,7 +23,7 @@ final class ToDoTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        label.font = .systemFont(ofSize: Constants.fontSize16, weight: .semibold)
         label.numberOfLines = 1
         return label
     }()
@@ -32,14 +32,14 @@ final class ToDoTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 12)
+        label.font = .systemFont(ofSize: Constants.fontSize12)
         label.numberOfLines = 2
         return label
     }()
     
     private lazy var dateOfCreation: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 12)
+        label.font = .systemFont(ofSize: Constants.fontSize12)
         label.textColor = .white.withAlphaComponent(0.5)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -49,7 +49,7 @@ final class ToDoTableViewCell: UITableViewCell {
         let stack = UIStackView(arrangedSubviews: [todoDescriptionView, dateOfCreation])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.spacing = 6
+        stack.spacing = Constants.stackSpacingSmall
         stack.alignment = .fill
         stack.distribution = .fill
         return stack
@@ -114,7 +114,7 @@ final class ToDoTableViewCell: UITableViewCell {
         contentView.addSubview(separatorView)
         
         NSLayoutConstraint.activate([
-            radioButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            radioButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.cellVerticalPadding),
             radioButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.radioButtonLeadingPadding),
             radioButton.widthAnchor.constraint(equalToConstant: Constants.radioButtonSize),
             radioButton.heightAnchor.constraint(equalToConstant: Constants.radioButtonSize),
@@ -123,14 +123,14 @@ final class ToDoTableViewCell: UITableViewCell {
             todoTitleView.leadingAnchor.constraint(equalTo: radioButton.trailingAnchor, constant: Constants.todoTextViewLeadingPadding),
             todoTitleView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: Constants.todoTextViewTrailingPadding),
             
-            detailsStack.topAnchor.constraint(equalTo: todoTitleView.bottomAnchor, constant: 6),
+            detailsStack.topAnchor.constraint(equalTo: todoTitleView.bottomAnchor, constant: Constants.cellDescriptionTopPadding),
             detailsStack.leadingAnchor.constraint(equalTo: todoTitleView.leadingAnchor),
             detailsStack.trailingAnchor.constraint(equalTo: todoTitleView.trailingAnchor),
-            detailsStack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -12),
+            detailsStack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: Constants.cellDescriptionBottomPadding),
             
-            separatorView.heightAnchor.constraint(equalToConstant: 1),
-            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            separatorView.heightAnchor.constraint(equalToConstant: Constants.cellSeparatorHeight),
+            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.cellHorizontalPadding),
+            separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.cellHorizontalPadding),
             separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
     }
@@ -190,7 +190,7 @@ extension ToDoTableViewCell: UIContextMenuInteractionDelegate {
             
             let deleteAction = UIAction(
                 title: .delete,
-                image: UIImage(systemName: "trash"),
+                image: .trash,
                 attributes: .destructive
             ) { _ in
                 guard let todo = self.todo else { return }
