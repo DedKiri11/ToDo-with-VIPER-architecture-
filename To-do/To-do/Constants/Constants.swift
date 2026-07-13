@@ -8,9 +8,8 @@
 import Foundation
 
 struct Constants {
-    static let fontSize20 = 20.0
+    static let fontSize34 = 34.0
     static let titleLeading = 10.0
-    static let mainTitleText = "ToDo List"
     static let textViewFontSize = 16.0
     static let dateOfCreationFontSize = 10.0
     static let dateOfCreationLeadingPadding = -45.0
@@ -31,6 +30,4 @@ struct Constants {
     static let radioButtonImageTrailing = -5.0
     static let radioButtonImageTop = 5.0
     static let radioButtonImageBottom = -5.0
-    
 }
-

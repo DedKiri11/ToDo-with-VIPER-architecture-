@@ -4,21 +4,40 @@
 //
 //  Created by Кирилл Зезюков on 02.09.2024.
 //
-
 import UIKit
 
-class RadioButton: UIButton {
-
+final class RadioButton: UIButton {
     override var isSelected: Bool {
         didSet {
-            image.alpha = isSelected ? 1 : 0
+            body.layer.borderColor = isSelected
+            ? UIColor.yellow.cgColor
+            : UIColor.radioButtonColorUnselected.cgColor
+            
+            let color: UIColor = isSelected ? .yellow : .radioButtonColorUnselected
+            let image = UIImage(systemName: "checkmark")?.withTintColor(color, renderingMode: .alwaysOriginal)
+            checkmarkView.image = image
+            
+            checkmarkView.alpha = isSelected ? 1 : 0
         }
     }
     
-    private lazy var image: UIImageView = {
+    private lazy var body: UIView = {
+        let view = UIView()
+        view.isUserInteractionEnabled = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.layer.cornerRadius = Constants.radioButtonCornerRadius
+        view.layer.borderWidth = Constants.radioButtonBorderWidth
+        view.layer.borderColor = UIColor.white.cgColor
+        
+        return view
+    }()
+    
+    private lazy var checkmarkView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "checkmark")?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        imageView.isUserInteractionEnabled = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         return imageView
     }()
     
@@ -32,15 +51,21 @@ class RadioButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-
     func setUpUI() {
-        self.addSubview(image)
+        isUserInteractionEnabled = true
+        body.addSubview(checkmarkView)
+        addSubview(body)
         
         NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.radioButtonImageTop),
-            image.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: Constants.radioButtonImageTrailing),
-            image.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.radioButtonImageLeading),
-            image.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: Constants.radioButtonImageBottom)
+            body.topAnchor.constraint(equalTo: topAnchor),
+            body.leadingAnchor.constraint(equalTo: leadingAnchor),
+            body.trailingAnchor.constraint(equalTo: trailingAnchor),
+            body.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            checkmarkView.topAnchor.constraint(equalTo: body.topAnchor, constant: Constants.radioButtonImageTop),
+            checkmarkView.trailingAnchor.constraint(equalTo: body.trailingAnchor, constant: Constants.radioButtonImageTrailing),
+            checkmarkView.leadingAnchor.constraint(equalTo: body.leadingAnchor, constant: Constants.radioButtonImageLeading),
+            checkmarkView.bottomAnchor.constraint(equalTo: body.bottomAnchor, constant: Constants.radioButtonImageBottom)
         ])
     }
 }

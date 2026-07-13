@@ -30,3 +30,15 @@ protocol ToDoInteractorProtocol: AnyObject {
 protocol ToDoRouterProtocol: AnyObject {
     static func createModule() -> ToDoViewController
 }
+
+protocol CoreDataServiceProtocol: AnyObject {
+    func createToDo(todo: ToDoEntity, completion: @escaping () -> Void)
+    func fetchTodos(completion: @escaping ([ToDoEntity]) -> Void)
+    func downloadTodos(todos: [ToDoEntity])
+    func updateToDo(todo: ToDoEntity, completion: @escaping () -> Void)
+    func deleteToDo(todo: ToDoEntity, completion: @escaping () -> Void)
+}
+
+protocol ToDoAPIServiceProtocol: AnyObject {
+    func getData(completion: @escaping (([ToDoEntity])->()))
+}

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51A205733005047A0036224E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 51A205723005047A0036224E /* Localizable.xcstrings */; };
+		51A20577300504900036224E /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A20574300504900036224E /* DateExtension.swift */; };
+		51A20578300504900036224E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A20575300504900036224E /* StringExtension.swift */; };
+		51A2057A300505510036224E /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A20579300505510036224E /* ToDoTableViewCell.swift */; };
+		51A2057C300505650036224E /* ToDoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A2057B300505650036224E /* ToDoDetailViewController.swift */; };
 		FD1A59182C8603250030DA7C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1A59172C8603250030DA7C /* Launch Screen.storyboard */; };
 		FD6A4B832C80BE40002432F7 /* ToDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FD6A4B812C80BE40002432F7 /* ToDo.xcdatamodeld */; };
 		FD6A4B8F2C80C267002432F7 /* PersistenseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6A4B8E2C80C267002432F7 /* PersistenseService.swift */; };
@@ -19,7 +24,6 @@
 		FD725DBE2C7F4B560013C0C1 /* ToDoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD725DBD2C7F4B560013C0C1 /* ToDoInteractor.swift */; };
 		FD725DC02C7F4B6E0013C0C1 /* ToDoProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD725DBF2C7F4B6E0013C0C1 /* ToDoProtocols.swift */; };
 		FD725DC32C7F5F0E0013C0C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD725DC22C7F5F0E0013C0C1 /* Constants.swift */; };
-		FD725DCC2C8084390013C0C1 /* ToDoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD725DCB2C8084390013C0C1 /* ToDoTableCell.swift */; };
 		FD725DCF2C808E710013C0C1 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD725DCE2C808E710013C0C1 /* APIHelper.swift */; };
 		FD725DD32C80987E0013C0C1 /* ToDoAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD725DD22C80987E0013C0C1 /* ToDoAPIService.swift */; };
 		FD725DD52C80A1230013C0C1 /* HTTPResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD725DD42C80A1230013C0C1 /* HTTPResponse.swift */; };
@@ -30,6 +34,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51A205723005047A0036224E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		51A20574300504900036224E /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		51A20575300504900036224E /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		51A20579300505510036224E /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		51A2057B300505650036224E /* ToDoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDetailViewController.swift; sourceTree = "<group>"; };
 		FD1A59172C8603250030DA7C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FD6A4B822C80BE40002432F7 /* ToDo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDo.xcdatamodel; sourceTree = "<group>"; };
 		FD6A4B8E2C80C267002432F7 /* PersistenseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenseService.swift; sourceTree = "<group>"; };
@@ -42,7 +51,6 @@
 		FD725DBD2C7F4B560013C0C1 /* ToDoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoInteractor.swift; sourceTree = "<group>"; };
 		FD725DBF2C7F4B6E0013C0C1 /* ToDoProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoProtocols.swift; sourceTree = "<group>"; };
 		FD725DC22C7F5F0E0013C0C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		FD725DCB2C8084390013C0C1 /* ToDoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableCell.swift; sourceTree = "<group>"; };
 		FD725DCE2C808E710013C0C1 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		FD725DD22C80987E0013C0C1 /* ToDoAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAPIService.swift; sourceTree = "<group>"; };
 		FD725DD42C80A1230013C0C1 /* HTTPResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
@@ -65,6 +73,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51A20576300504900036224E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				51A20574300504900036224E /* DateExtension.swift */,
+				51A20575300504900036224E /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		FD6A4B952C80D2F9002432F7 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +129,7 @@
 		FD725DB22C7F4ABC0013C0C1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				51A205723005047A0036224E /* Localizable.xcstrings */,
 				FDD6A2FC2C7C9FF8009E2122 /* Assets.xcassets */,
 				FDD6A3012C7C9FF8009E2122 /* Info.plist */,
 			);
@@ -121,6 +139,7 @@
 		FD725DB32C7F4AD20013C0C1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				51A20576300504900036224E /* Extensions */,
 				FD725DB42C7F4AF10013C0C1 /* ToDo */,
 			);
 			path = Modules;
@@ -150,7 +169,8 @@
 		FD725DC62C8083D90013C0C1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FD725DCB2C8084390013C0C1 /* ToDoTableCell.swift */,
+				51A2057B300505650036224E /* ToDoDetailViewController.swift */,
+				51A20579300505510036224E /* ToDoTableViewCell.swift */,
 				FD725DB72C7F4B1D0013C0C1 /* ToDoViewController.swift */,
 				FDF857FD2C85C60D00A0748B /* RadioButton.swift */,
 			);
@@ -264,7 +284,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 2640;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					FDD6A2EF2C7C9FF3009E2122 = {
@@ -298,6 +318,7 @@
 			files = (
 				FD1A59182C8603250030DA7C /* Launch Screen.storyboard in Resources */,
 				FDD6A2FD2C7C9FF8009E2122 /* Assets.xcassets in Resources */,
+				51A205733005047A0036224E /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,9 +329,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51A2057A300505510036224E /* ToDoTableViewCell.swift in Sources */,
 				FD725DBE2C7F4B560013C0C1 /* ToDoInteractor.swift in Sources */,
 				FD725DB82C7F4B1D0013C0C1 /* ToDoViewController.swift in Sources */,
 				FD6A4B942C80C4B3002432F7 /* EntityMapper.swift in Sources */,
+				51A2057C300505650036224E /* ToDoDetailViewController.swift in Sources */,
 				FD725DC02C7F4B6E0013C0C1 /* ToDoProtocols.swift in Sources */,
 				FD725DD32C80987E0013C0C1 /* ToDoAPIService.swift in Sources */,
 				FD6A4B922C80C294002432F7 /* CoreDataService.swift in Sources */,
@@ -318,8 +341,9 @@
 				FD725DB62C7F4B030013C0C1 /* ToDoEntity.swift in Sources */,
 				FD725DBA2C7F4B310013C0C1 /* ToDoPresenter.swift in Sources */,
 				FDF857FE2C85C60D00A0748B /* RadioButton.swift in Sources */,
-				FD725DCC2C8084390013C0C1 /* ToDoTableCell.swift in Sources */,
 				FDD6A2F62C7C9FF3009E2122 /* SceneDelegate.swift in Sources */,
+				51A20577300504900036224E /* DateExtension.swift in Sources */,
+				51A20578300504900036224E /* StringExtension.swift in Sources */,
 				FD725DBC2C7F4B3F0013C0C1 /* ToDoRouter.swift in Sources */,
 				FD725DCF2C808E710013C0C1 /* APIHelper.swift in Sources */,
 				FD6A4B832C80BE40002432F7 /* ToDo.xcdatamodeld in Sources */,
